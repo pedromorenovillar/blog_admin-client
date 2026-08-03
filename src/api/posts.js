@@ -57,3 +57,20 @@ export async function deletePost(postId, token) {
   }
   return response.json();
 }
+export async function addPost(title, content, token) {
+  const body = { title, content };
+  const response = await fetch(`${API_URL}/posts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    throw data;
+  }
+
+  return data;
+}
