@@ -1,0 +1,21 @@
+footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.icons {
+  display: flex;
+  gap: 1rem;
+}
+
+img {
+  height: 24px;
+}
+
+.copyright {
+  font-family: "Roboto", sans-serif;
+}
