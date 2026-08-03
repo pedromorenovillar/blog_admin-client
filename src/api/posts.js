@@ -28,3 +28,18 @@ export async function getAllUserPosts(token) {
   }
   return response.json();
 }
+
+export async function toggleStatus(status, postId, token) {
+  const action = !status ? "publish" : "unpublish";
+  const response = await fetch(`${API_URL}/posts/${postId}/${action}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Failed to ${action}`);
+  }
+  return response.json();
+}
