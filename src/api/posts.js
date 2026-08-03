@@ -15,3 +15,16 @@ export async function getSinglePost(id) {
   }
   return response.json();
 }
+
+export async function getAllUserPosts(token) {
+  const response = await fetch(`${API_URL}/posts/me`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch posts");
+  }
+  return response.json();
+}

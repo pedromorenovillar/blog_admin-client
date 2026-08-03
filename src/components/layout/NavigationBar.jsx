@@ -18,7 +18,6 @@ function NavigationBar() {
   return (
     <div className={styles.navBar}>
       <NavLink to="/">Dashboard</NavLink>
-      <NavLink to="/posts/">View Posts</NavLink>
       {isAuthenticated ? (
         <>
           <NavLink to="/posts/new-post">New Post</NavLink>
