@@ -43,3 +43,17 @@ export async function toggleStatus(status, postId, token) {
   }
   return response.json();
 }
+
+export async function deletePost(postId, token) {
+  const response = await fetch(`${API_URL}/posts/${postId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Failed to delete the post`);
+  }
+  return response.json();
+}
