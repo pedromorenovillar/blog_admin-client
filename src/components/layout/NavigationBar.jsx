@@ -2,7 +2,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./NavigationBar.module.css";
-import { UserStar, StickyNote, Eye, LogOut } from "lucide-react";
+import {
+  UserStar,
+  StickyNote,
+  Eye,
+  LogOut,
+  UserPen,
+  KeyRound,
+} from "lucide-react";
 const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 
 function NavigationBar() {
@@ -40,8 +47,14 @@ function NavigationBar() {
         </>
       ) : (
         <>
-          <NavLink to="/users/login">Login</NavLink>
-          <a href={`${CLIENT_URL}/users/register`}>Register</a>
+          <NavLink to="/users/login">
+            <KeyRound />
+            Login
+          </NavLink>
+          <a href={`${CLIENT_URL}/users/register`}>
+            <UserPen />
+            Register
+          </a>
         </>
       )}
     </div>
