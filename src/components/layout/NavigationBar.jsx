@@ -10,7 +10,7 @@ function NavigationBar() {
   async function handleLogout() {
     try {
       await logout();
-      navigate("/");
+      navigate("/users/login");
     } catch (error) {
       console.error(error);
     }

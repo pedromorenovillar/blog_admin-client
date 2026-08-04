@@ -6,6 +6,7 @@ import NewPost from "../pages/NewPost";
 import Posts from "../pages/Posts";
 import SinglePost from "../pages/SinglePost";
 import EditPost from "../pages/EditPost";
+import AuthorRoute from "./AuthorRoute";
 
 const routes = [
   {
@@ -14,7 +15,11 @@ const routes = [
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: (
+          <AuthorRoute>
+            <Dashboard />
+          </AuthorRoute>
+        ),
       },
       {
         path: "users/login",
@@ -26,7 +31,11 @@ const routes = [
       },
       {
         path: "posts/new-post",
-        element: <NewPost />,
+        element: (
+          <AuthorRoute>
+            <NewPost />
+          </AuthorRoute>
+        ),
       },
       {
         path: "posts/",
@@ -34,7 +43,11 @@ const routes = [
       },
       {
         path: "posts/:id/edit",
-        element: <EditPost />,
+        element: (
+          <AuthorRoute>
+            <EditPost />
+          </AuthorRoute>
+        ),
       },
       {
         path: "posts/:id/:slug",
