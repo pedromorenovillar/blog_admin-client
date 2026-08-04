@@ -1,12 +1,9 @@
 import RootLayout from "../pages/RootLayout";
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
-import Register from "../pages/Register";
 import NewPost from "../pages/NewPost";
-import Posts from "../pages/Posts";
-import SinglePost from "../pages/SinglePost";
 import EditPost from "../pages/EditPost";
-import AuthorRoute from "./AuthorRoute";
+import AuthorRoute from "../components/auth/AuthorRoute";
 
 const routes = [
   {
@@ -26,10 +23,6 @@ const routes = [
         element: <Login />,
       },
       {
-        path: "users/register",
-        element: <Register />,
-      },
-      {
         path: "posts/new-post",
         element: (
           <AuthorRoute>
@@ -38,20 +31,12 @@ const routes = [
         ),
       },
       {
-        path: "posts/",
-        element: <Posts />,
-      },
-      {
         path: "posts/:id/edit",
         element: (
           <AuthorRoute>
             <EditPost />
           </AuthorRoute>
         ),
-      },
-      {
-        path: "posts/:id/:slug",
-        element: <SinglePost />,
       },
     ],
   },

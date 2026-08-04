@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./NavigationBar.module.css";
+const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 
 function NavigationBar() {
   const { logout, isAuthenticated } = useContext(AuthContext);
@@ -21,12 +22,13 @@ function NavigationBar() {
       {isAuthenticated ? (
         <>
           <NavLink to="/posts/new-post">New Post</NavLink>
+          <a href={`${CLIENT_URL}/posts`}>View Blog</a>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <>
           <NavLink to="/users/login">Login</NavLink>
-          <NavLink to="/users/register">Register</NavLink>
+          <a href={`${CLIENT_URL}/users/register`}>Register</a>
         </>
       )}
     </div>

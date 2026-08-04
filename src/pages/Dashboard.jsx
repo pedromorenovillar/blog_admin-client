@@ -66,7 +66,14 @@ function Dashboard() {
   return (
     <>
       {isAuthenticated ? (
-        <h1>Hello, {user.firstname}, you are an author.</h1>
+        <>
+          <h1>Hello, {user.firstname}!</h1>
+          <p>
+            As an author, you can create, delete, edit and publish/unpublish
+            your posts.
+          </p>
+          <p>You can also see other author's posts and comment on them.</p>
+        </>
       ) : (
         <h1>Dashboard</h1>
       )}
