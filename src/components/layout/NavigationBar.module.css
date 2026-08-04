@@ -3,3 +3,42 @@
   margin-top: 1rem;
   justify-content: space-around;
 }
+
+.navBar > * {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+
+.navBar > *:hover {
+  color: rgb(9, 9, 122);
+  outline: 1px solid rgb(9, 9, 122);
+}
+
+.navBar > * > svg {
+  padding-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .navBar {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .navBar > * {
+    justify-content: center;
+  }
+  .navBar > *:hover {
+    color: white;
+    outline: none;
+    background-color: rgb(9, 9, 122);
+  }
+}
