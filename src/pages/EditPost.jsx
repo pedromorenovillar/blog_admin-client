@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { addPost, getSinglePost } from "../api/posts";
+import { savePost, getSinglePost } from "../api/posts";
 import { useNavigate, useParams } from "react-router-dom";
 
 function EditPost() {
@@ -36,7 +36,7 @@ function EditPost() {
     event.preventDefault();
     setIsSending(true);
     try {
-      await addPost(title, content, accessToken);
+      await savePost(title, content, accessToken, "PUT", id);
       setContent("");
       setTitle("");
       navigate("/");
@@ -49,14 +49,22 @@ function EditPost() {
     } finally {
       setIsSending(false);
     }
-    return;
   }
 
   useEffect(() => {
     async function loadPost() {
-      const post = await getSinglePost(id);
-      setTitle(post.title);
-      setContent(post.content);
+      try {
+        const post = await getSinglePost(id);
+        setTitle(post.title);
+        setContent(post.content);
+        
+      } catch (error) {
+        if (error.errors) {
+        setErrors(error.errors);
+      } else {
+        setErrors([{ msg: error.message }]);
+      }
+      }
     }
 
     loadPost();

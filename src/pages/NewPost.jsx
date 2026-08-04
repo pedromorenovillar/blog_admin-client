@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { addPost } from "../api/posts";
+import { savePost } from "../api/posts";
 import { useNavigate } from "react-router-dom";
 
 function NewPost() {
@@ -35,7 +35,7 @@ function NewPost() {
     event.preventDefault();
     setIsSending(true);
     try {
-      await addPost(title, content, accessToken);
+      await savePost(title, content, accessToken);
       setContent("");
       setTitle("");
       navigate("/");
@@ -48,7 +48,6 @@ function NewPost() {
     } finally {
       setIsSending(false);
     }
-    return;
   }
 
   return (

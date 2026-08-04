@@ -37,7 +37,7 @@ function Dashboard() {
       setError(error.message);
     }
   }
-  async function handleEdit(postId) {
+  function handleEdit(postId) {
     // Pass the post ID to editpost
     navigate(`/posts/${postId}/edit`);
   }

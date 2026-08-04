@@ -57,10 +57,11 @@ export async function deletePost(postId, token) {
   }
   return response.json();
 }
-export async function addPost(title, content, token) {
+export async function savePost(title, content, token, method = "POST", id=null) {
   const body = { title, content };
-  const response = await fetch(`${API_URL}/posts`, {
-    method: "POST",
+  const URL = method === "POST" ? `${API_URL}/posts` : `${API_URL}/posts/${id}` 
+  const response = await fetch(URL, {
+    method: method,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
