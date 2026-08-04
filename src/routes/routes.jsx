@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import NewPost from "../pages/NewPost";
 import Posts from "../pages/Posts";
 import SinglePost from "../pages/SinglePost";
+import EditPost from "../pages/EditPost";
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
       {
         path: "posts/",
         element: <Posts />,
+      },
+      {
+        path: "posts/:id/edit",
+        element: <EditPost />,
       },
       {
         path: "posts/:id/:slug",

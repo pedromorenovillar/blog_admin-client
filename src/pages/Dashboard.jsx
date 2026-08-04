@@ -1,11 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import {
-  getAllUserPosts,
-  toggleStatus,
-  deletePost,
-  getSinglePost,
-} from "../api/posts";
+import { getAllUserPosts, toggleStatus, deletePost } from "../api/posts";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
@@ -43,11 +38,8 @@ function Dashboard() {
     }
   }
   async function handleEdit(postId) {
-    // Get post
-    const foundPost = await getSinglePost(postId);
-    console.log(foundPost);
-    // Send contents to editpost
-    // navigate("/Edit", (title = { foundPost }));
+    // Pass the post ID to editpost
+    navigate(`/posts/${postId}/edit`);
   }
 
   useEffect(() => {

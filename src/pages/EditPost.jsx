@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { addPost } from "../api/posts";
-import { useNavigate } from "react-router-dom";
+import { addPost, getSinglePost } from "../api/posts";
+import { useNavigate, useParams } from "react-router-dom";
 
 function EditPost() {
   const [content, setContent] = useState("");
@@ -10,6 +10,7 @@ function EditPost() {
   const [errors, setErrors] = useState([]);
   const { accessToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   // Convert errors array to object
   const fieldErrors = Object.fromEntries(
@@ -50,6 +51,16 @@ function EditPost() {
     }
     return;
   }
+
+  useEffect(() => {
+    async function loadPost() {
+      const post = await getSinglePost(id);
+      setTitle(post.title);
+      setContent(post.content);
+    }
+
+    loadPost();
+  }, [id]);
 
   return (
     <>
