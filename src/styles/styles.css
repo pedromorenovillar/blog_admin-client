@@ -1,3 +1,5 @@
+@import "variables.css";
+
 body {
   font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -39,15 +41,15 @@ form > label {
 }
 
 form > button {
-  background-color: whitesmoke;
+  background-color: var(--main-color);
   padding: 0.5em;
   margin-top: 1em;
   border-radius: 3px;
-  color: rgb(9, 9, 122);
+  color: var(--background-color);
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 form > button:hover {
-  background-color: rgb(9, 9, 122);
-  color: white;
+  background-color: var(--background-color);
+  color: var(--main-color);
 }
