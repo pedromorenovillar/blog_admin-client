@@ -8,12 +8,12 @@ function RootLayout() {
   const { loading } = useContext(AuthContext);
 
   return (
-    <>
+    <div className="app-container">
       <NavigationBar />
 
       <main>{loading ? <h1>Loading...</h1> : <Outlet />}</main>
       <Footer />
-    </>
+    </div>
   );
 }
 export default RootLayout;
