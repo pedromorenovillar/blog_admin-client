@@ -72,6 +72,7 @@ function Login() {
           id="password"
           value={password}
           onChange={handlePassword}
+          autoComplete="password"
         />
         {fieldErrors.password && <p>{fieldErrors.password}</p>}
         <button type="submit">Submit</button>
