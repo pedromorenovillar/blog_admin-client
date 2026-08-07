@@ -24,7 +24,6 @@ body {
 
 main {
   flex-grow: 1;
-  width: min(450px, 100%);
   padding: 2rem 1rem;
   margin: 0 auto;
   height: max-content;
@@ -64,4 +63,14 @@ form > button {
 form > button:hover {
   background-color: var(--background-color);
   color: var(--main-color);
+}
+
+ul {
+  outline: 1px solid red;
+  width: fit-content;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-content: center;
 }
