@@ -1,63 +1,78 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./NavigationBar.module.css";
 import {
+  Menu,
+  House,
   UserStar,
-  StickyNote,
   Eye,
   LogOut,
-  UserPen,
   KeyRound,
+  UserPen,
 } from "lucide-react";
-const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 
 function NavigationBar() {
-  const { logout, isAuthenticated } = useContext(AuthContext);
+  const { logout, isAuthenticated, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const ADMIN_URL = import.meta.env.VITE_ADMIN_URL;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   async function handleLogout() {
     try {
       await logout();
-      navigate("/users/login");
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
   }
+
+  function toggleMenu() {
+    setIsMenuOpen((current) => !current);
+  }
+
   return (
-    <div className={styles.navBar}>
-      <NavLink to="/">
-        <UserStar />
-        Dashboard
-      </NavLink>
-      {isAuthenticated ? (
-        <>
-          <NavLink to="/posts/new-post">
-            <StickyNote />
-            New Post
-          </NavLink>
-          <a href={`${CLIENT_URL}/posts`}>
-            <Eye />
-            View Blog
+    <>
+      <button onClick={toggleMenu} className={styles.navMenu}>
+        <Menu />
+        Menu
+      </button>
+      <div className={`${styles.navBar} ${isMenuOpen && styles.menuOpen}`}>
+        <NavLink to="/">
+          <House />
+          Home
+        </NavLink>
+        <NavLink to="/posts/">
+          <Eye />
+          View Blog
+        </NavLink>
+        {user?.isAuthor && (
+          <a href={ADMIN_URL}>
+            <UserStar />
+            Dashboard
           </a>
-          <button onClick={handleLogout}>
-            <LogOut />
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <NavLink to="/users/login">
-            <KeyRound />
-            Login
-          </NavLink>
-          <a href={`${CLIENT_URL}/users/register`}>
-            <UserPen />
-            Register
-          </a>
-        </>
-      )}
-    </div>
+        )}
+        {isAuthenticated ? (
+          <>
+            <button onClick={handleLogout}>
+              <LogOut />
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink to="/users/login">
+              <KeyRound />
+              Login
+            </NavLink>
+            <NavLink to="/users/register">
+              <UserPen />
+              Register
+            </NavLink>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
