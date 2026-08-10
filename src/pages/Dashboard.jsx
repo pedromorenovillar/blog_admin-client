@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { getAllUserPosts, toggleStatus, deletePost } from "../api/posts";
 import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
+import Spinner from "../components/common/Spinner";
 
 function Dashboard() {
   const { user, isAuthenticated, accessToken } = useContext(AuthContext);
@@ -81,7 +82,7 @@ function Dashboard() {
         <h1>Your posts</h1>
 
         {loading ? (
-          <p>Loading...</p>
+          <Spinner size={100} />
         ) : (
           <ul className={styles.PostList}>
             {posts.map((post) => (

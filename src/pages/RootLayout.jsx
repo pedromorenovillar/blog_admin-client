@@ -3,6 +3,7 @@ import Footer from "../components/layout/Footer";
 import NavigationBar from "../components/layout/NavigationBar";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import Spinner from "../components/common/Spinner";
 
 function RootLayout() {
   const { loading } = useContext(AuthContext);
@@ -11,7 +12,7 @@ function RootLayout() {
     <div className="app-container">
       <NavigationBar />
 
-      <main>{loading ? <h1>Loading...</h1> : <Outlet />}</main>
+      <main>{loading ? <Spinner size={60} /> : <Outlet />}</main>
       <Footer />
     </div>
   );

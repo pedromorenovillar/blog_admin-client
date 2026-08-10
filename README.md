@@ -1,2 +1,0 @@
-style buttons
-add spinners
