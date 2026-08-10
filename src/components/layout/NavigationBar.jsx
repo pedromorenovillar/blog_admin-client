@@ -6,16 +6,17 @@ import {
   Menu,
   House,
   UserStar,
+  StickyNote,
   Eye,
   LogOut,
-  KeyRound,
   UserPen,
+  KeyRound,
 } from "lucide-react";
 
 function NavigationBar() {
   const { logout, isAuthenticated, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const ADMIN_URL = import.meta.env.VITE_ADMIN_URL;
+  const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   async function handleLogout() {
@@ -42,18 +43,22 @@ function NavigationBar() {
           <House />
           Home
         </NavLink>
-        <NavLink to="/posts/">
+        <a href={`${CLIENT_URL}/posts`}>
           <Eye />
           View Blog
-        </NavLink>
+        </a>
         {user?.isAuthor && (
-          <a href={ADMIN_URL}>
+          <NavLink to="/">
             <UserStar />
             Dashboard
-          </a>
+          </NavLink>
         )}
         {isAuthenticated ? (
           <>
+            <NavLink to="/posts/new-post">
+              <StickyNote />
+              New Post
+            </NavLink>
             <button onClick={handleLogout}>
               <LogOut />
               Logout
@@ -65,10 +70,10 @@ function NavigationBar() {
               <KeyRound />
               Login
             </NavLink>
-            <NavLink to="/users/register">
+            <a href={`${CLIENT_URL}/users/register`}>
               <UserPen />
               Register
-            </NavLink>
+            </a>
           </>
         )}
       </div>
