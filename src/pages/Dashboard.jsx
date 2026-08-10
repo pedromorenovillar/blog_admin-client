@@ -64,7 +64,7 @@ function Dashboard() {
   }
   // id, authorId, title, content, createdAt, updatedAt, isPublished, slug
   return (
-    <>
+    <div className="MainContent">
       {isAuthenticated ? (
         <>
           <h1>Hello, {user.firstname}!</h1>
@@ -96,7 +96,7 @@ function Dashboard() {
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }
 
