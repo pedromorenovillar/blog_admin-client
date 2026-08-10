@@ -1,4 +1,6 @@
 :root {
   --main-color: white;
   --background-color: goldenrod;
+  --published-color: green;
+  --unpublished-color: grey;
 }

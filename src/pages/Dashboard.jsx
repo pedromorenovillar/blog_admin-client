@@ -86,8 +86,17 @@ function Dashboard() {
           <ul className={styles.PostList}>
             {posts.map((post) => (
               <li key={post.id} className={styles.ListItem}>
-                {post.title} | {new Date(post.createdAt).toLocaleDateString()} |
-                {post.isPublished ? "Published" : "Not published"}
+                <div className={styles.PostData}>
+                  <div className={styles.PostTitle}>{post.title}</div>
+                  <div className={styles.PostDate}>
+                    {new Date(post.createdAt).toLocaleDateString()}
+                  </div>
+                  <div
+                    className={`${styles.PostPublished} ${!post.isPublished && `${styles.PostNotPublished}`}`}
+                  >
+                    {post.isPublished ? "Published" : "Not published"}
+                  </div>
+                </div>
                 <button onClick={() => handleEdit(post.id)}>Edit</button>
                 <button onClick={() => handleDelete(post.id)}>Delete</button>
                 <button onClick={() => handlePublishStatus(post)}>
