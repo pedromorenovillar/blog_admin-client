@@ -97,9 +97,22 @@ function Dashboard() {
                     {post.isPublished ? "Published" : "Not published"}
                   </div>
                 </div>
-                <button onClick={() => handleEdit(post.id)}>Edit</button>
-                <button onClick={() => handleDelete(post.id)}>Delete</button>
-                <button onClick={() => handlePublishStatus(post)}>
+                <button
+                  className={`${styles.DashBoardEditBtn} ${styles.DashBoardBtn}`}
+                  onClick={() => handleEdit(post.id)}
+                >
+                  Edit
+                </button>
+                <button
+                  className={`${styles.DashBoardDeleteBtn} ${styles.DashBoardBtn}`}
+                  onClick={() => handleDelete(post.id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className={`${styles.DashBoardPublishBtn} ${styles.DashBoardBtn}`}
+                  onClick={() => handlePublishStatus(post)}
+                >
                   {post.isPublished ? "Unpublish" : "Publish"}
                 </button>
               </li>

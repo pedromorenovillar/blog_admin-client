@@ -1,4 +1,6 @@
-@import "../styles/variables.css" .Container {
+@import "../styles/variables.css";
+
+.Container {
   padding: 2rem;
 }
 
@@ -42,4 +44,37 @@
 }
 .PostNotPublished {
   background-color: var(--unpublished-color);
+}
+
+.DashBoardBtn {
+  border-radius: 5px;
+  color: var(--main-color);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+  border: 1px solid white;
+}
+
+.DashBoardBtn:hover {
+  color: whitesmoke;
+  border: 1px solid black;
+}
+
+.DashBoardEditBtn {
+  background-color: mediumslateblue;
+}
+.DashBoardEditBtn:hover {
+  background-color: rgb(7, 7, 89);
+}
+.DashBoardDeleteBtn {
+  background-color: mediumvioletred;
+}
+.DashBoardDeleteBtn:hover {
+  background-color: rgb(89, 7, 38);
+}
+.DashBoardPublishBtn {
+  background-color: mediumturquoise;
+}
+.DashBoardPublishBtn:hover {
+  background-color: rgb(72, 90, 209);
 }
