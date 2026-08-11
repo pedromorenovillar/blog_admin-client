@@ -79,7 +79,7 @@ function Dashboard() {
         <h1>Dashboard</h1>
       )}
       <div className={styles.Container}>
-        <h1>Your posts</h1>
+        <h2>Your posts</h2>
 
         {loading ? (
           <Spinner size={100} />
@@ -120,6 +120,7 @@ function Dashboard() {
             ))}
           </ul>
         )}
+        {!loading && posts.length === 0 && <p>You haven't created any posts yet. Select 'New Post' on the navigation bar to create your first blog post.</p>}
       </div>
     </div>
   );
