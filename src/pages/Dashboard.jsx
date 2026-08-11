@@ -11,6 +11,11 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const dateOptions = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  };
 
   async function handlePublishStatus(post) {
     try {
@@ -90,7 +95,10 @@ function Dashboard() {
                 <div className={styles.PostData}>
                   <div className={styles.PostTitle}>{post.title}</div>
                   <div className={styles.PostDate}>
-                    {new Date(post.createdAt).toLocaleDateString()}
+                    {new Date(post.createdAt).toLocaleDateString(
+                      "en-GB",
+                      dateOptions,
+                    )}
                   </div>
                   <div
                     className={`${styles.PostPublished} ${!post.isPublished && `${styles.PostNotPublished}`}`}
@@ -120,7 +128,12 @@ function Dashboard() {
             ))}
           </ul>
         )}
-        {!loading && posts.length === 0 && <p>You haven't created any posts yet. Select 'New Post' on the navigation bar to create your first blog post.</p>}
+        {!loading && posts.length === 0 && (
+          <p>
+            You haven't created any posts yet. Select 'New Post' on the
+            navigation bar to create your first blog post.
+          </p>
+        )}
       </div>
     </div>
   );

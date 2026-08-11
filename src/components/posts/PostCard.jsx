@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"; // <- Client side nav without reloading
 
 function PostCard({ post }) {
+  const dateOptions = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  };
   return (
     <>
       <li>
@@ -11,7 +16,7 @@ function PostCard({ post }) {
           {post.content.length > 50
             ? post.content.slice(0, 50) + "..."
             : post.content}{" "}
-          | {new Date(post.createdAt).toLocaleDateString()}
+          | {new Date(post.createdAt).toLocaleDateString("en-GB", dateOptions)}
         </h3>
       </li>
     </>
